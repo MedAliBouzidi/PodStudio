@@ -12,12 +12,9 @@ class Database
     {
         if (self::$instance === null) {
             try {
+                self::setup();
                 $dsn = "mysql:host=" . self::$host . ";dbname=" . self::$dbname . ";charset=utf8mb4";
-                self::$instance = new PDO($dsn, self::$username, self::$password, [
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                    PDO::ATTR_EMULATE_PREPARES => false,
-                ]);
+                self::$instance = new PDO($dsn, self::$username, self::$password);
             } catch (PDOException $e) {
                 die("Database connection failed: " . $e->getMessage());
             }
@@ -25,14 +22,11 @@ class Database
         return self::$instance;
     }
 
-    private function __construct()
+    private static function setup()
     {
         self::$host = getenv("DB_HOST") ?: "localhost";
         self::$dbname = getenv("DB_NAME") ?: "pod_studio";
         self::$username = getenv("DB_USER") ?: "root";
         self::$password = getenv("DB_PASSWORD") ?: "";
-    }
-    private function __clone()
-    {
     }
 }

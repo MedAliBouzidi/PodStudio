@@ -1,7 +1,5 @@
 <?php
 
-require_once '../config/Database.php';
-
 class Package
 {
     private ?int $id;

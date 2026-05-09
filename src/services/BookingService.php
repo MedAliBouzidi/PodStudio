@@ -1,5 +1,5 @@
 <?php
-require_once '../entities/Booking.php';
+require_once __DIR__ . '/../entities/Booking.php';
 
 class BookingService
 {

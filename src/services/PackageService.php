@@ -1,5 +1,5 @@
 <?php
-require_once '../entities/Package.php';
+require_once __DIR__ . '/../entities/Package.php';
 
 class PackageService
 {

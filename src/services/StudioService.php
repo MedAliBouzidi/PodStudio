@@ -1,5 +1,5 @@
 <?php
-require_once '../entities/Studio.php';
+require_once __DIR__ . '/../entities/Studio.php';
 
 class StudioService
 {
@@ -18,7 +18,7 @@ class StudioService
                 ':capacity'       => $studio->getCapacity(),
                 ':price_per_hour' => $studio->getPricePerHour(),
                 ':cover_image'    => $studio->getCoverImage(),
-                ':status'         => $studio->getStatus(),
+                ':status'         => $studio->getStatus()->value
             ]);
             return (int) $pdo->lastInsertId();
         } catch (PDOException $e) {
@@ -46,7 +46,7 @@ class StudioService
                 ':capacity'       => $studio->getCapacity(),
                 ':price_per_hour' => $studio->getPricePerHour(),
                 ':cover_image'    => $studio->getCoverImage(),
-                ':status'         => $studio->getStatus(),
+                ':status'         => $studio->getStatus()->value,
                 ':id'             => $studio->getId(),
             ]);
         } catch (PDOException $e) {

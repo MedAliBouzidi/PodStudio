@@ -1,5 +1,5 @@
 <?php
-require_once '../entities/Equipment.php';
+require_once __DIR__ . '/../entities/Equipment.php';
 
 class EquipmentService
 {
@@ -18,7 +18,7 @@ class EquipmentService
                 ':description' => $equipment->getDescription(),
                 ':image'       => $equipment->getImage(),
                 ':quantity'    => $equipment->getQuantity(),
-                ':status'      => $equipment->getStatus(),
+                ':status'      => $equipment->getStatus()->value,
             ]);
             return (int)$pdo->lastInsertId();
         } catch (PDOException $e) {
@@ -45,7 +45,7 @@ class EquipmentService
                 ':description' => $equipment->getDescription(),
                 ':image'       => $equipment->getImage(),
                 ':quantity'    => $equipment->getQuantity(),
-                ':status'      => $equipment->getStatus(),
+                ':status'      => $equipment->getStatus()->value,
                 ':id'          => $equipment->getId(),
             ]);
         } catch (PDOException $e) {

@@ -1,6 +1,4 @@
 <?php
-require_once '../config/Database.php';
-
 class Equipment
 {
     private ?int    $id;
