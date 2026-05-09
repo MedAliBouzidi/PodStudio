@@ -1,0 +1,57 @@
+services:
+  app:
+    build: .
+    # image: pod_studio_app:latest
+    container_name: pod_studio_app
+    ports:
+      - '8080:80'
+    volumes:
+      - ./src:/var/www/html:Z
+    depends_on:
+      - db
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /var/www/html
+          ignore:
+            - .git
+        - action: rebuild
+          path: ./Dockerfile
+
+  db:
+    image: mysql:8.0
+    container_name: pod_studio_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DB_NAME}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test:
+        [
+          'CMD',
+          '/usr/local/bin/healthcheck.sh',
+          '--su-mysql',
+          '--connect',
+          '--innodb_initialized',
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: pod_studio_phpmyadmin
+    restart: always
+    ports:
+      - '8081:80'
+    environment:
+      - PMA_HOST=db
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    depends_on:
+      - db
+
+volumes:
+  db_data:
