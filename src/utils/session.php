@@ -76,7 +76,7 @@ function currentUsername(): string
 
 function currentPicture(): string
 {
-    return $_SESSION['profile_picture'] ?? '/public/images/default_profile.png';
+    return $_SESSION['profile_picture'] ?? '/uploads/defaults/default_profile.png';
 }
 
 function currentRole(): ?string

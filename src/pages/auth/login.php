@@ -57,7 +57,8 @@ $pageTitle = 'Login — PodStudio';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="../../assets/css/index.css">
+    <link rel="stylesheet" href="../../assets/css/auth/login.css">
 </head>
 
 <body>
@@ -129,85 +130,8 @@ $pageTitle = 'Login — PodStudio';
         </div>
     </div>
 
-    <style>
-        .role-toggle {
-            display: flex;
-            gap: 0.5rem;
-            background: var(--bg-3);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 0.3rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .role-btn {
-            flex: 1;
-            padding: 0.55rem;
-            border: none;
-            border-radius: calc(var(--radius) - 2px);
-            background: transparent;
-            color: var(--text-3);
-            font-family: var(--font-body);
-            font-size: 0.875rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all var(--transition);
-        }
-
-        .role-btn.active {
-            background: var(--bg);
-            color: var(--accent);
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .input-eye {
-            position: relative;
-        }
-
-        .input-eye .form-control {
-            padding-right: 2.75rem;
-        }
-
-        .eye-btn {
-            position: absolute;
-            right: 0.75rem;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            opacity: 0.5;
-            transition: opacity var(--transition);
-            padding: 0;
-            line-height: 1;
-        }
-
-        .eye-btn:hover {
-            opacity: 1;
-        }
-    </style>
-
-    <script src="/assets/js/index.js"></script>
-    <script>
-        // Role toggle
-        document.querySelectorAll('.role-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                document.getElementById('role-input').value = btn.dataset.role;
-            });
-        });
-
-        // Password visibility toggle
-        document.querySelectorAll('.eye-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const input = document.getElementById(btn.dataset.target);
-                input.type = input.type === 'password' ? 'text' : 'password';
-                btn.textContent = input.type === 'password' ? '👁' : '🙈';
-            });
-        });
-    </script>
+    <script src="../../assets/js/index.js"></script>
+    <script src="../../assets/js/auth/login.js"></script>
 </body>
 
 </html>

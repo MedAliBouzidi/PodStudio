@@ -27,7 +27,8 @@ require_once __DIR__ . '/../services/BookingService.php';
 $pdo = Database::getConnection();
 $log = [];
 
-function step(string $msg): void {
+function step(string $msg): void
+{
     global $log;
     $log[] = "<li>$msg</li>";
 }
@@ -153,11 +154,11 @@ foreach ($clients as $c) {
 // ── Studios ──────────────────────────────────────────────────
 $studioService = new StudioService();
 $studios = [
-    new Studio('Studio Alpha', 4, 2500.00, 'Professional podcast studio with soundproofing and 4K video setup.',    'Algiers - Hydra',         'studio_default.png', Status::Available),
-    new Studio('Studio Beta',  2, 1500.00, 'Compact solo studio perfect for voice-over and interview recordings.',  'Oran - Centre',           'studio_default.png', Status::Available),
-    new Studio('Studio Gamma', 6, 3500.00, 'Large studio for panel shows, live recordings and music podcasts.',     'Constantine - Ain Smara', 'studio_default.png', Status::Available),
-    new Studio('Studio Delta', 2, 1000.00, 'Budget-friendly studio with essential equipment for beginners.',        'Algiers - Bab Ezzouar',   'studio_default.png', Status::Maintenance),
-    new Studio('Studio Echo',  5, 4500.00, 'High-end studio with Dolby Atmos mixing and green screen background.', 'Algiers - Cheraga',       'studio_default.png', Status::Available),
+    new Studio('Studio Alpha', 4, 2500.00, 'Professional podcast studio with soundproofing and 4K video setup.',    'Ariana - Tunisia',        null, Status::Available),
+    new Studio('Studio Beta',  2, 1500.00, 'Compact solo studio perfect for voice-over and interview recordings.',  'Sousse - Tunisia',        null, Status::Available),
+    new Studio('Studio Gamma', 6, 3500.00, 'Large studio for panel shows, live recordings and music podcasts.',     'Tunis - Cité Universitaire', null, Status::Available),
+    new Studio('Studio Delta', 2, 1000.00, 'Budget-friendly studio with essential equipment for beginners.',        'Sidi Bouzid - Tunisia',  null, Status::Maintenance),
+    new Studio('Studio Echo',  5, 4500.00, 'High-end studio with Dolby Atmos mixing and green screen background.', 'Sousse - Tunisia',        null, Status::Available),
 ];
 $studioIds = [];
 foreach ($studios as $s) {
@@ -168,22 +169,22 @@ foreach ($studios as $s) {
 // ── Equipments ───────────────────────────────────────────────
 $equipmentService = new EquipmentService();
 $equipmentList = [
-    new Equipment($studioIds[0], 'Condenser Microphone', 'Rode',      'Rode NT1 studio microphone',              'equipment_default.png', 4, Status::Available),
-    new Equipment($studioIds[0], 'Audio Interface',      'Focusrite', 'Scarlett 4i4 4-channel interface',        'equipment_default.png', 1, Status::Available),
-    new Equipment($studioIds[0], 'Studio Monitor',       'Yamaha',    'HS8 powered studio monitors',             'equipment_default.png', 2, Status::Available),
-    new Equipment($studioIds[0], '4K Camera',            'Sony',      'Sony ZV-E10 for video podcast recording', 'equipment_default.png', 2, Status::Available),
-    new Equipment($studioIds[1], 'Dynamic Microphone',   'Shure',     'Shure SM7B broadcast microphone',         'equipment_default.png', 2, Status::Available),
-    new Equipment($studioIds[1], 'Audio Interface',      'Focusrite', 'Scarlett Solo interface',                 'equipment_default.png', 1, Status::Available),
-    new Equipment($studioIds[1], 'Pop Filter',           'Generic',   'Double-layer nylon pop filter',           'equipment_default.png', 2, Status::Available),
-    new Equipment($studioIds[2], 'Condenser Microphone', 'AKG',       'AKG C414 multi-pattern microphone',       'equipment_default.png', 6, Status::Available),
-    new Equipment($studioIds[2], 'Mixing Console',       'Behringer', 'Behringer X32 digital mixer',             'equipment_default.png', 1, Status::Available),
-    new Equipment($studioIds[2], 'Podcast Boom Arm',     'Rode',      'Rode PSA1 professional boom arm',         'equipment_default.png', 6, Status::Available),
-    new Equipment($studioIds[3], 'USB Microphone',       'Blue',      'Blue Yeti USB microphone',                'equipment_default.png', 2, Status::Available),
-    new Equipment($studioIds[3], 'Headphones',           'Sony',      'Sony MDR-7506 studio headphones',         'equipment_default.png', 2, Status::Maintenance),
-    new Equipment($studioIds[4], 'Ribbon Microphone',    'Royer',     'Royer R-121 ribbon microphone',           'equipment_default.png', 4, Status::Available),
-    new Equipment($studioIds[4], 'Atmos Processor',      'Dolby',     'Dolby Atmos mixing processor unit',       'equipment_default.png', 1, Status::Available),
-    new Equipment($studioIds[4], 'Green Screen',         'Elgato',    'Elgato collapsible green screen 1.8m',    'equipment_default.png', 1, Status::Available),
-    new Equipment($studioIds[4], '4K Camera',            'Canon',     'Canon EOS R50 with podcast mount',        'equipment_default.png', 3, Status::Available),
+    new Equipment($studioIds[0], 'Condenser Microphone', 'Rode',      'Rode NT1 studio microphone',              null, 4, Status::Available),
+    new Equipment($studioIds[0], 'Audio Interface',      'Focusrite', 'Scarlett 4i4 4-channel interface',        null, 1, Status::Available),
+    new Equipment($studioIds[0], 'Studio Monitor',       'Yamaha',    'HS8 powered studio monitors',             null, 2, Status::Available),
+    new Equipment($studioIds[0], '4K Camera',            'Sony',      'Sony ZV-E10 for video podcast recording', null, 2, Status::Available),
+    new Equipment($studioIds[1], 'Dynamic Microphone',   'Shure',     'Shure SM7B broadcast microphone',         null, 2, Status::Available),
+    new Equipment($studioIds[1], 'Audio Interface',      'Focusrite', 'Scarlett Solo interface',                 null, 1, Status::Available),
+    new Equipment($studioIds[1], 'Pop Filter',           'Generic',   'Double-layer nylon pop filter',           null, 2, Status::Available),
+    new Equipment($studioIds[2], 'Condenser Microphone', 'AKG',       'AKG C414 multi-pattern microphone',       null, 6, Status::Available),
+    new Equipment($studioIds[2], 'Mixing Console',       'Behringer', 'Behringer X32 digital mixer',             null, 1, Status::Available),
+    new Equipment($studioIds[2], 'Podcast Boom Arm',     'Rode',      'Rode PSA1 professional boom arm',         null, 6, Status::Available),
+    new Equipment($studioIds[3], 'USB Microphone',       'Blue',      'Blue Yeti USB microphone',                null, 2, Status::Available),
+    new Equipment($studioIds[3], 'Headphones',           'Sony',      'Sony MDR-7506 studio headphones',         null, 2, Status::Maintenance),
+    new Equipment($studioIds[4], 'Ribbon Microphone',    'Royer',     'Royer R-121 ribbon microphone',           null, 4, Status::Available),
+    new Equipment($studioIds[4], 'Atmos Processor',      'Dolby',     'Dolby Atmos mixing processor unit',       null, 1, Status::Available),
+    new Equipment($studioIds[4], 'Green Screen',         'Elgato',    'Elgato collapsible green screen 1.8m',    null, 1, Status::Available),
+    new Equipment($studioIds[4], '4K Camera',            'Canon',     'Canon EOS R50 with podcast mount',        null, 3, Status::Available),
 ];
 foreach ($equipmentList as $eq) {
     $equipmentService->save($eq);
@@ -229,21 +230,50 @@ file_put_contents($lock_file, date('Y-m-d H:i:s'));
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>PodStudio — Seeder</title>
     <style>
-        body { font-family: monospace; background: #0f0f0f; color: #e0e0e0; padding: 2rem; }
-        h1   { color: #f97316; }
-        ul   { line-height: 2; }
-        .done { margin-top: 2rem; background: #14532d; color: #86efac; padding: 1rem 1.5rem; border-radius: 8px; font-size: 1.1rem; }
-        .warn { margin-top: 1rem; background: #7c2d12; color: #fdba74; padding: .75rem 1.5rem; border-radius: 8px; }
+        body {
+            font-family: monospace;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: #f97316;
+        }
+
+        ul {
+            line-height: 2;
+        }
+
+        .done {
+            margin-top: 2rem;
+            background: #14532d;
+            color: #86efac;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+
+        .warn {
+            margin-top: 1rem;
+            background: #7c2d12;
+            color: #fdba74;
+            padding: .75rem 1.5rem;
+            border-radius: 8px;
+        }
     </style>
 </head>
+
 <body>
     <h1>🎙️ PodStudio — Database Seeder</h1>
     <ul><?= implode("\n", $log) ?></ul>
     <div class="done">✅ Seeding complete! Your database is ready.</div>
     <div class="warn">⚠️ Delete or restrict access to <code>seeder.php</code> now that it has run.</div>
 </body>
+
 </html>

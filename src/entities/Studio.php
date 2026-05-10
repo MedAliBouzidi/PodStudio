@@ -18,7 +18,7 @@ class Studio
         float   $price_per_hour,
         ?string $description,
         ?string $location,
-        string  $cover_image,
+        ?string  $cover_image,
         Status  $status
     ) {
         $this->name           = $name;

@@ -15,7 +15,7 @@ class Equipment
         string  $name,
         ?string $brand,
         ?string $description,
-        string  $image,
+        ?string  $image,
         int     $quantity,
         Status  $status
     ) {

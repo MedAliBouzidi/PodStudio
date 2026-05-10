@@ -34,7 +34,7 @@ function formatTimeRange(string $start, string $end): string {
 // Price Helpers
 
 /** Format a price with currency */
-function formatPrice(float $price, string $currency = 'DZD'): string {
+function formatPrice(float $price, string $currency = 'TND'): string {
     return number_format($price, 2, '.', ',') . ' ' . $currency;
 }
 

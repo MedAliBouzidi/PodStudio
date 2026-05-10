@@ -93,7 +93,8 @@ $pageTitle = 'Register — PodStudio';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="../../assets/css/index.css">
+    <link rel="stylesheet" href="../../assets/css/auth/register.css">
 </head>
 
 <body>
@@ -203,68 +204,8 @@ $pageTitle = 'Register — PodStudio';
         </div>
     </div>
 
-    <style>
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .input-eye {
-            position: relative;
-        }
-
-        .input-eye .form-control {
-            padding-right: 2.75rem;
-        }
-
-        .eye-btn {
-            position: absolute;
-            right: 0.75rem;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            opacity: 0.5;
-            transition: opacity 0.2s;
-            padding: 0;
-            line-height: 1;
-        }
-
-        .eye-btn:hover {
-            opacity: 1;
-        }
-
-        .form-control.is-error {
-            border-color: var(--red);
-        }
-
-        .upload-zone-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            pointer-events: none;
-        }
-
-        @media (max-width: 480px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-
-    <script src="/assets/js/index.js"></script>
-    <script>
-        document.querySelectorAll('.eye-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const input = document.getElementById(btn.dataset.target);
-                input.type = input.type === 'password' ? 'text' : 'password';
-                btn.textContent = input.type === 'password' ? '👁' : '🙈';
-            });
-        });
-    </script>
+    <script src="../../assets/js/index.js"></script>
+    <script src="../../assets/js/auth/register.js"></script>
 </body>
 
 </html>

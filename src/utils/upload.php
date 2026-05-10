@@ -6,7 +6,7 @@
  * Usage: $filename = uploadImage($_FILES['cover_image'], 'studios');
  */
 
-define('UPLOAD_BASE', __DIR__ . '/../../public/uploads/');
+define('UPLOAD_BASE', __DIR__ . '/../uploads/');
 define('UPLOAD_MAX_SIZE', 5 * 1024 * 1024); // 5MB
 define('UPLOAD_ALLOWED_TYPES', ['image/jpeg', 'image/png', 'image/webp']);
 define('UPLOAD_ALLOWED_EXTENSIONS', ['jpg', 'jpeg', 'png', 'webp']);
@@ -87,14 +87,14 @@ function deleteUploadedImage(string $filename, string $folder)
  */
 function uploadUrl(string $filename, string $folder): string
 {
-    $path = '/public/uploads/' . $folder . '/' . $filename;
+    $path =  '/uploads/' . $folder . '/' . $filename;
     // Fallback to default if file doesn't exist
     if (!file_exists(UPLOAD_BASE . $folder . '/' . $filename)) {
         return match ($folder) {
-            'studios'    => '/public/images/no_image.png',
-            'equipments' => '/public/images/no_image.png',
-            'profiles'   => '/public/images/default_profile.png',
-            default      => '/public/images/no_image.png',
+            'studios'    => '/uploads/defaults/no_image.png',
+            'equipments' => '/uploads/defaults/no_image.png',
+            'profiles'   => '/uploads/defaults/default_profile.png',
+            default      => '/uploads/defaults/no_image.png',
         };
     }
     return $path;
