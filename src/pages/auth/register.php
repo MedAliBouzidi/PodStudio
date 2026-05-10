@@ -69,8 +69,7 @@ if (isPost()) {
             );
             $client->setProfilePicture($picture);
 
-            $clientService = new ClientService();
-            $id = $clientService->save($client);
+            $id = ClientService::save($client);
 
             if ($id) {
                 loginUser($id, 'client', $values['username'], '/public/uploads/profiles/' . $picture);

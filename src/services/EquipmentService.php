@@ -3,7 +3,7 @@ require_once __DIR__ . '/../entities/Equipment.php';
 
 class EquipmentService
 {
-    public function save(Equipment $equipment): int
+    public static function save(Equipment $equipment): int
     {
         try {
             $pdo  = Database::getConnection();
@@ -27,7 +27,7 @@ class EquipmentService
         }
     }
 
-    public function update(Equipment $equipment): bool
+    public static function update(Equipment $equipment): bool
     {
         try {
             $pdo  = Database::getConnection();

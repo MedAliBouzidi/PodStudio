@@ -6,7 +6,7 @@ require_once __DIR__ . '/../config/Database.php';
 
 class ClientService
 {
-    public function save(Client $client): int
+    public static function save(Client $client): int
     {
         try {
             $pdo  = Database::getConnection();
@@ -29,7 +29,7 @@ class ClientService
         }
     }
 
-    public function update(Client $client): bool
+    public static function update(Client $client): bool
     {
         try {
             $pdo  = Database::getConnection();

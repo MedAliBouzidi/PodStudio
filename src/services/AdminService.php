@@ -6,7 +6,7 @@ require_once __DIR__ . '/../config/Database.php';
 
 class AdminService
 {
-    public function save(Admin $admin): int
+    public static function save(Admin $admin): int
     {
         try {
             $pdo  = Database::getConnection();
@@ -28,7 +28,7 @@ class AdminService
         }
     }
 
-    public function update(Admin $admin): bool
+    public static function update(Admin $admin): bool
     {
         try {
             $pdo  = Database::getConnection();

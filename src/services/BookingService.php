@@ -3,7 +3,7 @@ require_once __DIR__ . '/../entities/Booking.php';
 
 class BookingService
 {
-    public function save(Booking $booking): int
+    public static function save(Booking $booking): int
     {
         try {
             $pdo  = Database::getConnection();
@@ -29,7 +29,7 @@ class BookingService
         }
     }
 
-    public function update(Booking $booking): bool
+    public static function update(Booking $booking): bool
     {
         try {
             $pdo  = Database::getConnection();

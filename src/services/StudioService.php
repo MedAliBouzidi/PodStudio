@@ -3,7 +3,7 @@ require_once __DIR__ . '/../entities/Studio.php';
 
 class StudioService
 {
-    public function save(Studio $studio): int
+    public static function save(Studio $studio): int
     {
         try {
             $pdo  = Database::getConnection();
@@ -28,7 +28,7 @@ class StudioService
         }
     }
 
-    public function update(Studio $studio): bool
+    public static function update(Studio $studio): bool
     {
         try {
             $pdo  = Database::getConnection();

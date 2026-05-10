@@ -4,7 +4,7 @@ require_once __DIR__ . '/../entities/Package.php';
 class PackageService
 {
 
-    public function save(Package $package): int
+    public static function save(Package $package): int
     {
         try {
             $pdo  = Database::getConnection();
@@ -26,7 +26,7 @@ class PackageService
         }
     }
 
-    public function update(Package $package): bool
+    public static function update(Package $package): bool
     {
         try {
             $pdo  = Database::getConnection();
