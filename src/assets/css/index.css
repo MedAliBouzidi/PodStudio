@@ -249,7 +249,11 @@ p {
   z-index: 100;
 }
 
-.navbar-user:hover .navbar-dropdown {
+/* .navbar-user:hover .navbar-dropdown {
+  display: block;
+} */
+
+.show {
   display: block;
 }
 

@@ -26,13 +26,13 @@ $flash = getFlash();
 
     <?php if (isLoggedIn()): ?>
         <div class="navbar-user">
-            <img src="<?= e(currentPicture()) ?>" alt="avatar" class="navbar-avatar">
-            <span class="navbar-username"><?= e(currentUsername()) ?></span>
+                <img src="<?= e(currentPicture()) ?>" alt="avatar" class="navbar-avatar">
+                <span class="navbar-username"><?= e(currentUsername()) ?></span>
+                <div class="navbar-dropdown">
+                    <a href="<?= isAdmin() ? '#' : '/pages/client/profile.php' ?>">Profile</a>
+                    <a href="/pages/auth/logout.php" class="logout-link">Logout</a>
+                </div>
 
-            <div class="navbar-dropdown">
-                <a href="<?= isAdmin() ? '#' : '/pages/client/profile.php' ?>">Profile</a>
-                <a href="/pages/auth/logout.php" class="logout-link">Logout</a>
-            </div>
         </div>
     <?php endif; ?>
 </nav>
