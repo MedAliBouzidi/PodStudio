@@ -68,12 +68,13 @@ document.querySelectorAll(".navbar-links a").forEach((link) => {
 
 // User dropdown toggle
 document.addEventListener("click", (e) => {
-  const navbarUserDropdown = document.querySelector(
-    ".navbar-user .navbar-dropdown",
-  );
-  
-  if (navbarUserDropdown)
+  const navbarUser = document.querySelector(".navbar-user");
+  const navbarUserDropdown = navbarUser.querySelector(".navbar-dropdown");
+
+  if (navbarUser.contains(e.target))
     if (navbarUserDropdown.classList.contains("show"))
       navbarUserDropdown.classList.remove("show");
     else navbarUserDropdown.classList.add("show");
+  else if (navbarUserDropdown.classList.contains("show"))
+    navbarUserDropdown.classList.remove("show");
 });
