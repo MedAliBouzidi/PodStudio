@@ -1,4 +1,10 @@
-/* Variables */
+/* ═══════════════════════════════════════════════════════
+   PodStudio — Design System
+   Aesthetic: Dark industrial with warm amber accents
+   Fonts: Syne (display) + DM Sans (body)
+═══════════════════════════════════════════════════════ */
+
+/* ── Variables ─────────────────────────────────────── */
 :root {
   --bg: #0c0c0e;
   --bg-2: #141416;
@@ -38,7 +44,7 @@
   --transition: 0.2s ease;
 }
 
-/* Reset */
+/* ── Reset ─────────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -75,7 +81,7 @@ img {
   display: block;
 }
 
-/* Scrollbar */
+/* ── Scrollbar ─────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -88,7 +94,7 @@ img {
   border-radius: 99px;
 }
 
-/* Typography */
+/* ── Typography ────────────────────────────────────── */
 h1,
 h2,
 h3,
@@ -116,7 +122,7 @@ p {
   color: var(--text-2);
 }
 
-/* Layout */
+/* ── Layout ────────────────────────────────────────── */
 .page-wrapper {
   padding-top: var(--navbar-h);
   min-height: 100vh;
@@ -143,7 +149,7 @@ p {
   margin: 0;
 }
 
-/* Navbar */
+/* ── Navbar ────────────────────────────────────────── */
 .navbar {
   position: fixed;
   top: 0;
@@ -238,22 +244,23 @@ p {
 .navbar-dropdown {
   display: none;
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   right: 0;
+  padding-top: 8px;
+  background: transparent;
+  z-index: 100;
+}
+
+.navbar-dropdown-inner {
   background: var(--bg-3);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   min-width: 160px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  z-index: 100;
 }
 
-/* .navbar-user:hover .navbar-dropdown {
-  display: block;
-} */
-
-.show {
+.navbar-user.open .navbar-dropdown {
   display: block;
 }
 
@@ -274,7 +281,7 @@ p {
   color: var(--red);
 }
 
-/* Flash Messages */
+/* ── Flash Messages ────────────────────────────────── */
 .flash {
   position: fixed;
   top: calc(var(--navbar-h) + 1rem);
@@ -333,7 +340,7 @@ p {
   opacity: 1;
 }
 
-/* Cards */
+/* ── Cards ─────────────────────────────────────────── */
 .card {
   background: var(--bg-2);
   border: 1px solid var(--border);
@@ -358,7 +365,7 @@ p {
   object-fit: cover;
 }
 
-/* Grid */
+/* ── Grid ──────────────────────────────────────────── */
 .grid {
   display: grid;
   gap: 1.5rem;
@@ -373,7 +380,7 @@ p {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
-/* Buttons */
+/* ── Buttons ───────────────────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -449,7 +456,7 @@ p {
   justify-content: center;
 }
 
-/* Forms */
+/* ── Forms ─────────────────────────────────────────── */
 .form-group {
   margin-bottom: 1.25rem;
 }
@@ -507,7 +514,7 @@ textarea.form-control {
   margin-top: 0.35rem;
 }
 
-/* Table */
+/* ── Table ─────────────────────────────────────────── */
 .table-wrap {
   background: var(--bg-2);
   border: 1px solid var(--border);
@@ -561,7 +568,7 @@ tbody tr:hover {
   align-items: center;
 }
 
-/* Badges */
+/* ── Badges ────────────────────────────────────────── */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -619,7 +626,7 @@ tbody tr:hover {
   border: 1px solid var(--border);
 }
 
-/* Stat Cards */
+/* ── Stat Cards ────────────────────────────────────── */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -663,7 +670,7 @@ tbody tr:hover {
   font-weight: 600;
 }
 
-/* Empty State */
+/* ── Empty State ───────────────────────────────────── */
 .empty-state {
   text-align: center;
   padding: 4rem 2rem;
@@ -679,7 +686,7 @@ tbody tr:hover {
   margin-bottom: 0.5rem;
 }
 
-/* Auth Pages */
+/* ── Auth Pages ────────────────────────────────────── */
 .auth-page {
   min-height: 100vh;
   display: flex;
@@ -727,14 +734,14 @@ tbody tr:hover {
   margin-bottom: 2rem;
 }
 
-/* Divider */
+/* ── Divider ───────────────────────────────────────── */
 .divider {
   border: none;
   border-top: 1px solid var(--border);
   margin: 1.5rem 0;
 }
 
-/* Upload Preview */
+/* ── Upload Preview ────────────────────────────────── */
 .upload-zone {
   border: 2px dashed var(--border-2);
   border-radius: var(--radius);
@@ -760,7 +767,7 @@ tbody tr:hover {
   display: none;
 }
 
-/* Pagination */
+/* ── Pagination ────────────────────────────────────── */
 .pagination {
   display: flex;
   align-items: center;
@@ -796,7 +803,74 @@ tbody tr:hover {
   font-weight: 700;
 }
 
-/* Footer */
+/* ── Admin Form Cards ──────────────────────────────── */
+.form-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-section-title {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding-bottom: 3rem;
+}
+
+.form-control.is-error {
+  border-color: var(--red);
+}
+
+.back-link {
+  font-size: 0.875rem;
+  color: var(--text-3);
+  transition: color 0.2s;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+.back-link:hover {
+  color: var(--text);
+  opacity: 1;
+}
+
+.upload-zone-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+  .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ── Footer ────────────────────────────────────────── */
 .site-footer {
   border-top: 1px solid var(--border);
   padding: 1.5rem 2rem;
@@ -825,7 +899,7 @@ tbody tr:hover {
   color: var(--text-3);
 }
 
-/* Utilities */
+/* ── Utilities ─────────────────────────────────────── */
 .text-center {
   text-align: center;
 }
@@ -898,7 +972,7 @@ tbody tr:hover {
   clip: rect(0, 0, 0, 0);
 }
 
-/* Responsive */
+/* ── Responsive ────────────────────────────────────── */
 @media (max-width: 768px) {
   .navbar {
     padding: 0 1rem;
