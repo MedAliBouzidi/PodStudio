@@ -32,12 +32,12 @@ $availableStudios = count(array_filter($allStudios, fn($s) => $s->getStatus() ==
 
 // Revenue 
 $totalRevenue = array_sum(array_map(
-    fn($b) => $b['status'] === Status::Confirmed->value ? (float)$b['total_price'] : 0,
+    fn($b) => $b->getStatus() === Status::Confirmed->value ? (float)$b->getTotalPrice() : 0,
     $allBookings
 ));
 
 $pendingRevenue = array_sum(array_map(
-    fn($b) => $b['status'] === Status::Pending->value ? (float)$b['total_price'] : 0,
+    fn($b) => $b->getStatus() === Status::Pending->value ? (float)$b->getTotalPrice() : 0,
     $allBookings
 ));
 
@@ -48,15 +48,15 @@ $statusCounts = [
     'canceled'  => 0,
 ];
 foreach ($allBookings as $b) {
-    if (isset($statusCounts[$b['status']])) {
-        $statusCounts[$b['status']]++;
+    if (isset($statusCounts[$b->getStatus()])) {
+        $statusCounts[$b->getStatus()]++;
     }
 }
 
 // Bookings per studio 
 $studioBookings = [];
 foreach ($allBookings as $b) {
-    $name = $b['studio_name'] ?? 'Studio #' . $b['studio_id'];
+    $name = $b->getStudio()->getName() ?? 'Studio #' . $b->getStudioId();
     $studioBookings[$name] = ($studioBookings[$name] ?? 0) + 1;
 }
 arsort($studioBookings);
@@ -69,18 +69,18 @@ for ($i = 5; $i >= 0; $i--) {
     $monthlyRevenue[$label] = 0;
 }
 foreach ($allBookings as $b) {
-    if ($b['status'] !== Status::Confirmed->value) continue;
-    $month = date('M Y', strtotime($b['date']));
+    if ($b->getStatus() !== Status::Confirmed->value) continue;
+    $month = date('M Y', strtotime($b->getDate()));
     if (isset($monthlyRevenue[$month])) {
-        $monthlyRevenue[$month] += (float)$b['total_price'];
+        $monthlyRevenue[$month] += (float)$b->getTotalPrice();
     }
 }
 
 // Most booked package 
 $packageCounts = [];
 foreach ($allBookings as $b) {
-    if (!empty($b['package_name'])) {
-        $packageCounts[$b['package_name']] = ($packageCounts[$b['package_name']] ?? 0) + 1;
+    if (!empty($b->getPackage()->getName())) {
+        $packageCounts[$b->getPackage()->getName()] = ($packageCounts[$b->getPackage()->getName()] ?? 0) + 1;
     }
 }
 arsort($packageCounts);
@@ -209,12 +209,12 @@ require_once __DIR__ . '/../../includes/navbar.php';
                         <tbody>
                             <?php foreach ($recentBookings as $b): ?>
                                 <tr>
-                                    <td class="text-muted">#<?= $b['id'] ?></td>
-                                    <td><?= e($b['username']) ?></td>
-                                    <td><?= e($b['studio_name']) ?></td>
-                                    <td><?= formatDate($b['date']) ?></td>
-                                    <td class="text-accent"><?= formatPrice($b['total_price']) ?></td>
-                                    <td><span class="badge <?= statusBadgeClass($b['status']) ?>"><?= statusLabel($b['status']) ?></span></td>
+                                    <td class="text-muted">#<?= $b->getId() ?></td>
+                                    <td><?= e($b->getUser()->getUsername()) ?></td>
+                                    <td><?= e($b->getStudio()->getName()) ?></td>
+                                    <td><?= formatDate($b->getDate()) ?></td>
+                                    <td class="text-accent"><?= formatPrice($b->getTotalPrice()) ?></td>
+                                    <td><span class="badge <?= statusBadgeClass($b->getStatus()) ?>"><?= statusLabel($b->getStatus()) ?></span></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
