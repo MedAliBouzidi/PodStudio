@@ -116,7 +116,7 @@ class BookingService
             $req = Database::getConnection()->query("
                 SELECT b.*, u.username, s.name AS studio_name, p.name AS package_name
                 FROM bookings b
-                JOIN users   u ON b.user_id   = u.id
+                JOIN clients   u ON b.user_id   = u.id
                 JOIN studios s ON b.studio_id = s.id
                 LEFT JOIN packages p ON b.package_id = p.id
                 ORDER BY b.date DESC

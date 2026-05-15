@@ -1,5 +1,9 @@
 <?php
 
+require_once __DIR__ . '/../services/ClientService.php';
+require_once __DIR__ . '/../services/StudioService.php';
+require_once __DIR__ . '/../services/PackageService.php';
+
 class Booking
 {
     private ?int    $id;
@@ -137,5 +141,20 @@ class Booking
         $booking->id = (int) $row['id'];
         $booking->created_at = $row['created_at'];
         return $booking;
+    }
+
+    public function getUser(): ?User
+    {
+        return ClientService::findById($this->user_id);
+    }
+
+    public function getStudio(): ?Studio
+    {
+        return StudioService::findById($this->studio_id);
+    }
+
+    public function getPackage(): ?Package
+    {
+        return PackageService::findById($this->package_id);
     }
 }
