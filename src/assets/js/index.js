@@ -72,9 +72,9 @@ document.addEventListener("click", (e) => {
   const navbarUserDropdown = navbarUser.querySelector(".navbar-dropdown");
 
   if (navbarUser.contains(e.target))
-    if (navbarUserDropdown.classList.contains("show"))
-      navbarUserDropdown.classList.remove("show");
-    else navbarUserDropdown.classList.add("show");
-  else if (navbarUserDropdown.classList.contains("show"))
-    navbarUserDropdown.classList.remove("show");
+    if (navbarUser.classList.contains("open"))
+      navbarUser.classList.remove("open");
+    else navbarUser.classList.add("open");
+  else if (navbarUser.classList.contains("open"))
+    navbarUser.classList.remove("open");
 });

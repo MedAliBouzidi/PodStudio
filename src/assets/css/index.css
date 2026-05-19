@@ -246,6 +246,7 @@ p {
   position: absolute;
   top: 100%;
   right: 0;
+  width: 100%;
   padding-top: 8px;
   background: transparent;
   z-index: 100;
@@ -269,7 +270,9 @@ p {
   padding: 0.65rem 1rem;
   color: var(--text-2);
   font-size: 0.875rem;
+  text-align: center;
   transition: all var(--transition);
+  background: var(--bg-4);
   opacity: 1;
 }
 
