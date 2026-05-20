@@ -14,12 +14,13 @@ class User
         string $username,
         string $email,
         string $password,
+        ?string $profile_picture
     ) {
         $this->full_name = $full_name;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
-        $this->profile_picture = '/uploads/defaults/default_profile.png';
+        $this->profile_picture = $profile_picture ?? '/uploads/defaults/default_profile.png';
         $this->created_at = date('Y-m-d H:i:s');
     }
 

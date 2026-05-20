@@ -178,7 +178,7 @@ require_once __DIR__ . '/../../../includes/navbar.php';
                                 <td><?= e($b->getStudio()->getName()) ?></td>
                                 <td><?= formatDate($b->getDate()) ?></td>
                                 <td class="text-muted text-sm"><?= formatTimeRange($b->getStartTime(), $b->getEndTime()) ?></td>
-                                <td class="text-muted text-sm"><?= e($b->getPackage()->getName() ?? '—') ?></td>
+                                <td class="text-muted text-sm"><?= e($b->getPackage() && $b->getPackage()->getName() ?? '—') ?></td>
                                 <td class="text-accent fw-600"><?= number_format($b->getTotalPrice(), 2) ?> TND</td>
                                 <td>
                                     <!-- Inline status change -->

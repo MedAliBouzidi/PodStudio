@@ -168,7 +168,7 @@ require_once __DIR__ . '/../../../includes/navbar.php';
                     <?php if ($client): ?>
                         <div class="client-detail-row">
                             <img
-                                src="<?= e(currentPicture()) ?>"
+                                src="<?= e(uploadUrl($client->getProfilePicture(), 'profiles')) ?>"
                                 alt="<?= e($client->getUsername()) ?>"
                                 class="client-avatar">
                             <div>

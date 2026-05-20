@@ -155,6 +155,8 @@ class Booking
 
     public function getPackage(): ?Package
     {
+        if ($this->package_id === null) 
+            return null;
         return PackageService::findById($this->package_id);
     }
 }

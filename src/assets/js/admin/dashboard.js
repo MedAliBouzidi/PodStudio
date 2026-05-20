@@ -1,5 +1,9 @@
 const dataFromPHP = JSON.parse(document.getElementById("data-to-js").textContent);
 
+const revenueLabels = JSON.parse(dataFromPHP.revenueLabels);
+const revenueData = JSON.parse(dataFromPHP.revenueData);
+const statusData = dataFromPHP.statusData;
+
 const accent = '#f59e0b';
 const green = '#22c55e';
 const orange = '#f97316';
@@ -14,10 +18,10 @@ Chart.defaults.font.family = "'DM Sans', sans-serif";
 new Chart(document.getElementById('revenueChart'), {
     type: 'bar',
     data: {
-        labels: dataFromPHP.revenueLabels,
+        labels: revenueLabels,
         datasets: [{
-            label: 'Revenue (DZD)',
-            data: dataFromPHP.revenueData,
+            label: 'Revenue (TND)',
+            data: revenueData,
             backgroundColor: 'rgba(245,158,11,0.25)',
             borderColor: accent,
             borderWidth: 2,
@@ -33,7 +37,7 @@ new Chart(document.getElementById('revenueChart'), {
             },
             tooltip: {
                 callbacks: {
-                    label: ctx => ' ' + ctx.parsed.y.toLocaleString() + ' DZD'
+                    label: ctx => ' ' + ctx.parsed.y.toLocaleString() + ' TND'
                 }
             }
         },
@@ -66,7 +70,7 @@ new Chart(document.getElementById('statusChart'), {
     data: {
         labels: ['Confirmed', 'Pending', 'Canceled'],
         datasets: [{
-            data: dataFromPHP.statusData,
+            data: statusData,
             backgroundColor: [
                 'rgba(34,197,94,0.8)',
                 'rgba(249,115,22,0.8)',

@@ -79,7 +79,7 @@ foreach ($allBookings as $b) {
 // Most booked package 
 $packageCounts = [];
 foreach ($allBookings as $b) {
-    if (!empty($b->getPackage()->getName())) {
+    if ($b->getPackage() && !empty($b->getPackage()->getName())) {
         $packageCounts[$b->getPackage()->getName()] = ($packageCounts[$b->getPackage()->getName()] ?? 0) + 1;
     }
 }
@@ -283,9 +283,6 @@ require_once __DIR__ . '/../../includes/navbar.php';
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="/assets/js/index.js"></script>
-
 <script src="/assets/js/admin/dashboard.js"></script>
-</body>
 
-</html>
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>

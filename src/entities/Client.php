@@ -11,9 +11,10 @@ class Client extends User
         string $username,
         string $password,
         string $email,
+        ?string $profile_picture,
         string $phone
     ) {
-        parent::__construct($full_name, $username, $email, $password);
+        parent::__construct($full_name, $username, $email, $password, $profile_picture);
         $this->phone = $phone;
     }
 
@@ -34,6 +35,7 @@ class Client extends User
             $row['username'],
             $row['password'],
             $row['email'],
+            $row['profile_picture'],
             $row['phone']
         );
         $client->id = $row['id'];

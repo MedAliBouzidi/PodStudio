@@ -10,7 +10,7 @@ class Admin extends User
         string $email,
         string $password,
     ) {
-        parent::__construct($full_name, $username, $email, $password);
+        parent::__construct($full_name, $username, $email, $password, null);
     }
 
     public static function fromRow(array $row): Admin

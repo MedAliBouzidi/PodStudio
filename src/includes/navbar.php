@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../utils/session.php';
 require_once __DIR__ . '/../utils/helpers.php';
+require_once __DIR__ . '/../utils/upload.php';
 
 $flash = getFlash();
 ?>
@@ -26,7 +27,7 @@ $flash = getFlash();
 
     <?php if (isLoggedIn()): ?>
         <div class="navbar-user">
-            <img src="<?= e(currentPicture()) ?>" alt="avatar" class="navbar-avatar">
+            <img src="<?= e(uploadUrl(currentPicture(), 'profiles')) ?>" alt="avatar" class="navbar-avatar">
             <span class="navbar-username"><?= e(currentUsername()) ?></span>
             <div class="navbar-dropdown">
                 <?php if (isClient()) { ?>

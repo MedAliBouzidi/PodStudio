@@ -127,7 +127,7 @@ require_once __DIR__ . '/../../../includes/navbar.php';
                         <?php endif; ?>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Price per Hour (DZD) *</label>
+                        <label class="form-label">Price per Hour (TND) *</label>
                         <input type="number" name="price_per_hour" class="form-control <?= isset($errors['price_per_hour']) ? 'is-error' : '' ?>"
                             min="1" value="<?= isPost() ? post('price_per_hour') : $studio->getPricePerHour() ?>" required>
                         <?php if (isset($errors['price_per_hour'])): ?>
